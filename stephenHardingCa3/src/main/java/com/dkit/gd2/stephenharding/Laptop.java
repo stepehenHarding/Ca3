@@ -9,4 +9,12 @@ public class Laptop extends Computer{
         this.screenSize = screenSize;
         this.batteryLife = batteryLife;
     }
+
+    public int getScreenSize() {
+        return screenSize;
+    }
+
+    public int getBatteryLife() {
+        return batteryLife;
+    }
 }

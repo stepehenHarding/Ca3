@@ -9,4 +9,13 @@ public class Desktop extends Computer{
         this.monitorBrand = monitorBrand;
         this.monitorSize = monitorSize;
     }
+
+    public String getMonitorBrand() { return monitorBrand; }
+
+    public int getMonitorSize() { return monitorSize; }
+
+    @Override
+    public String toString() {
+        return "Desktop{" +"Manufacturer= "+getManufacturer() +", Processor= "+getProcessor()+", RamSize= "+getRamSize()+", Disk size= "+getDiskSize()+", Weight"+getWeight()+", Assert Tag= "+getAssetTag()+", Purchase Date= "+getPurchaseDate()+ ", monitorBrand='" + monitorBrand + ", monitorSize=" + monitorSize + '}'+'\'';
+    }
 }

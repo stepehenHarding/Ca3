@@ -5,8 +5,16 @@ public class RaspberryPi extends Computer{
     private int sdCardSize;
 
     public RaspberryPi(String manufacturer, String processor, int ramSize, int diskSize, int weight, String assetTag, String purchaseDate, int gpioPins, int sdCardSize) {
-        super(manufacturer, processor, ramSize, diskSize, weight, assetTag, purchaseDate);
+        super("raspberry Pi", processor, ramSize, 0, weight, assetTag, purchaseDate);
         this.gpioPins = gpioPins;
         this.sdCardSize = sdCardSize;
+    }
+
+    public int getGpioPins() {
+        return gpioPins;
+    }
+
+    public int getSdCardSize() {
+        return sdCardSize;
     }
 }

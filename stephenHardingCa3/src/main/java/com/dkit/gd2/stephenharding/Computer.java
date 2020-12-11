@@ -47,4 +47,17 @@ public class Computer
     public String getPurchaseDate() {
         return purchaseDate;
     }
+
+    @Override
+    public String toString() {
+        return "Computer{" +
+                "manufacturer='" + manufacturer + '\'' +
+                ", processor='" + processor + '\'' +
+                ", ramSize=" + ramSize +
+                ", diskSize=" + diskSize +
+                ", weight=" + weight +
+                ", assetTag='" + assetTag + '\'' +
+                ", purchaseDate='" + purchaseDate + '\'' +
+                '}';
+    }
 }
