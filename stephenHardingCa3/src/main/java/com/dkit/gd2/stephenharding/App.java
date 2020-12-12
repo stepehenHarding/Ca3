@@ -18,12 +18,67 @@ public class App
     {
         System.out.println("welcome to Computer database app");
         DesktopDB desktopDB = new DesktopDB();
+        RaspberryPiDB raspberryDB = new RaspberryPiDB();
+        LaptopDB laptopDB = new LaptopDB();
         desktopDB.loadDesktopFromFile();
-        doMenuLoop(desktopDB);
+        raspberryDB.loadRaspberryPiFromFile();
+        laptopDB.loadLaptopFromFile();
+        doMenuLoop(desktopDB,raspberryDB,laptopDB);
         desktopDB.saveDesktopsToFile();
+        raspberryDB.saveRaspberryToFile();
+        laptopDB.saveLaptopsToFile();
     }
 
-    private void doMenuLoop(DesktopDB desktopDB)
+    private void doMenuLoop(DesktopDB desktopDB ,RaspberryPiDB raspberryDB,LaptopDB laptopDB)
+    {
+        boolean loop = true;
+        MainMenu menuOption;
+        int option = -1;
+        while(loop)
+        {
+            printMainMenu();
+            try
+            {
+                option = keyboard.nextInt();
+                keyboard.nextLine();
+                menuOption = MainMenu.values()[option];
+                switch(menuOption)
+                {
+                    case QUIT_APPLICATION:
+                        loop=false;
+                        break;
+                    case DISPLAY_DESKTOP_MENU:
+                        doDesktopMenuLoop(desktopDB);
+                        break;
+                    case DISPLAY_LAPTOP_MENU:
+                        doLaptopMenuLoop(laptopDB);
+                        break;
+                    case DISPLAY_RASPBERRYPI_MENU:
+                        doRaspberryPiMenuLoop(raspberryDB);
+                        break;
+
+
+                }
+            }
+            catch(InputMismatchException ime)
+            {
+                System.out.println("please enter a valid option");
+            }
+        }
+    }
+
+    private void printMainMenu()
+    {
+        System.out.println("\n Options to select:");
+        for(int i=0; i < MainMenu.values().length;i++)
+        {
+            System.out.println("\t" + Colours.BLUE + i + ". " + MainMenu.values()[i].toString()+Colours.RESET);
+        }
+        System.out.print("Enter a number to select the option (0 to quit):>");
+    }
+
+    /////////////////////////////////DESKTOP//////////////////////////////////////////////////////////
+    private void doDesktopMenuLoop(DesktopDB desktopDB)
     {
         boolean loop = true;
         DesktopMainMenu menuOption;
@@ -70,12 +125,101 @@ public class App
         System.out.print("Enter a number to select the option (0 to quit):>");
     }
 
-    private void printMainMenu()
+    ///////////////////////////RaspberryPi///////////////////////////////////////////
+
+    private void doRaspberryPiMenuLoop(RaspberryPiDB raspberryDB)
+    {
+        boolean loop = true;
+        RaspberryPiMainMenu menuOption;
+        int option = -1;
+        while(loop)
+        {
+            printRaspberryPiMainMenu();
+            try
+            {
+                option = keyboard.nextInt();
+                keyboard.nextLine();
+                menuOption = RaspberryPiMainMenu.values()[option];
+                switch(menuOption)
+                {
+                    case QUIT_RASPBERRYPI_MENU:
+                        loop=false;
+                        break;
+                    case ADD_RASPBERRYPI:
+                        raspberryDB.addRaspberryPi();
+
+                        break;
+                    case DELETE_RASPBERRYPI:
+                        raspberryDB.deleteRaspberryPi();
+                        break;
+                    case PRINT_RASPBERRYPI:
+                        raspberryDB.printRaspberryPi();
+                        break;
+                }
+
+            }
+            catch(InputMismatchException ime)
+            {
+                System.out.println("please enter a valid option");
+            }
+        }
+    }
+
+    private void printRaspberryPiMainMenu()
     {
         System.out.println("\n Options to select:");
-        for(int i=0; i < MainMenu.values().length;i++)
+        for(int i=0; i < RaspberryPiMainMenu.values().length;i++)
         {
-            System.out.println("\t" + Colours.BLUE + i + ". " + MainMenu.values()[i].toString()+Colours.RESET);
+            System.out.println("\t" + Colours.BLUE + i + ". " + RaspberryPiMainMenu.values()[i].toString()+Colours.RESET);
+        }
+        System.out.print("Enter a number to select the option (0 to quit):>");
+    }
+
+    //////////////////////////////////////////////////////////////////////////
+
+    private void doLaptopMenuLoop(LaptopDB laptopDB)
+    {
+        boolean loop = true;
+        LaptopMainMenu menuOption;
+        int option = -1;
+        while(loop)
+        {
+            printLaptopMainMenu();
+            try
+            {
+                option = keyboard.nextInt();
+                keyboard.nextLine();
+                menuOption = LaptopMainMenu.values()[option];
+                switch(menuOption)
+                {
+                    case QUIT_LAPTOP_MENU:
+                        loop=false;
+                        break;
+                    case ADD_LAPTOP:
+                        laptopDB.addLaptops();
+                        break;
+                    case DELETE_LAPTOP:
+                        laptopDB.deleteLaptop();
+                        break;
+                    case PRINT_LAPTOP:
+                        laptopDB.printLaptop();
+                        break;
+                }
+
+            }
+            catch(InputMismatchException ime)
+            {
+                System.out.println("please enter a valid option");
+            }
+        }
+    }
+
+    private void printLaptopMainMenu()
+    {
+        System.out.println("\n Options to select:");
+        for(int i=0; i < LaptopMainMenu.values().length;i++)
+        {
+            System.out.println("\t" + Colours.BLUE + i + ". " + LaptopMainMenu.values()[i].toString()+Colours.RESET);
         }
         System.out.print("Enter a number to select the option (0 to quit):>");
     }

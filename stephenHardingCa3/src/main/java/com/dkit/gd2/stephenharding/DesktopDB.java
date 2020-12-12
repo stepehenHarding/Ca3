@@ -48,8 +48,6 @@ public class DesktopDB
             {
                 desktopsFile.write(desktop.getManufacturer()+","+desktop.getProcessor()+","+desktop.getRamSize()+","+desktop.getDiskSize()+","+desktop.getWeight()+","+desktop.getAssetTag()+","+desktop.getPurchaseDate()+","+desktop.getMonitorBrand()+","+desktop.getMonitorSize());
                 desktopsFile.write("\n");
-                System.out.println("working");
-
             }
         }
         catch(IOException ioe)
@@ -84,6 +82,7 @@ public class DesktopDB
                 System.out.println("desktop could not be found");
             }
         }
+        saveDesktopsToFile();
     }
 
     private String enterField(String field)
@@ -145,7 +144,6 @@ public class DesktopDB
                 System.out.println("desktop could not be found");
             }
         }
-        saveDesktopsToFile();
     }
 
     private Desktop findDesktop(String desktopToDelete)
@@ -173,4 +171,5 @@ public class DesktopDB
             System.out.println("that desktop does not exist");
         }
     }
+
 }

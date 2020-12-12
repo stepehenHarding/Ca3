@@ -17,4 +17,13 @@ public class Laptop extends Computer{
     public int getBatteryLife() {
         return batteryLife;
     }
+
+    @Override
+    public String toString() {
+        return "Laptop{"+Colours.GREEN +"Manufacturer= "+getManufacturer() +", Processor= "+getProcessor()+", RamSize= "+getRamSize()+", Disk size= "+getDiskSize()
+                +", Weight"+getWeight()+", Assert Tag= "+getAssetTag()+", Purchase Date= "+getPurchaseDate()+"screenSize=" + screenSize +
+                ", batteryLife=" + batteryLife + '}'+Colours.RESET+'\'';
+    }
+
+
 }
