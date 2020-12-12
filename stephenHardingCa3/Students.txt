@@ -1,0 +1,5 @@
+james,D0012,jamesTheGod@yahoo.com,1519928,not renting
+dave,D0013,daceTheGod@yahoo.com,1517728,not renting
+wack,D00199,yeezee@gmail.com,1298488300,not renting
+luke,d0988,yack@attakck.com,12314125,not renting
+will,D00188,2,2,not renting
