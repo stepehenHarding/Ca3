@@ -1,9 +1,8 @@
 package com.dkit.gd2.stephenharding;
 
 import java.io.*;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class BookingDB
@@ -22,12 +21,11 @@ public class BookingDB
                 input = BookingsFile.nextLine();
                 String[] data = input.split(",");
                 String bookingID = data[0];
-                int bookingDate =Integer.parseInt(data[1]);
-                int returnDate = Integer.parseInt(data[2]);
+                String bookingDate= data[1];
+                String returnDate=data[2];
                 String computerType= data[3];
                 String computerAssetTag= data[4];
                 String studentID= data[5] ;
-
 
 
                 Booking readInBooking = new Booking(bookingID,bookingDate,returnDate,computerType,computerAssetTag,studentID);
@@ -59,8 +57,8 @@ public class BookingDB
     public void addBookings()
     {
         String bookingID= enterField("bookingID");
-        int bookingDate=loopUntilValidInt("bookingDate");
-        int returnDate=loopUntilValidInt("returnDate");
+        String bookingDate=enterField("bookingDate");
+        String returnDate=enterField("returnDate");
         String computerType=enterField("computerType");
         String computerAssetTag=enterField("computerAssetTag");
         String studentID=enterField("studentID");
@@ -69,7 +67,7 @@ public class BookingDB
 
         if(this.booking !=null)
         {
-            if(b != null)
+            if(b != null )
             {
                 booking.add(b);
             }
@@ -87,33 +85,6 @@ public class BookingDB
         System.out.println("Please enter Bookings "+field+":");
         input = keyboard.nextLine();
         return input;
-    }
-
-    private int loopUntilValidInt(String intField)
-    {
-        boolean check = true;
-        while(check)
-        {
-            try
-            {
-                if(intField.equals("bookingDate"))
-                {
-                    int bookingDate = Integer.parseInt(enterField(intField));
-                    return bookingDate;
-                }
-                else if(intField.equals("returnDate"))
-                {
-                    int ramSize = Integer.parseInt(enterField(intField));
-                    return ramSize;
-                }
-
-            }
-            catch(NumberFormatException nfe)
-            {
-                System.out.println("Please enter a valid interger");
-            }
-        }
-        return -1;
     }
 
     public void deleteBooking()
@@ -158,12 +129,63 @@ public class BookingDB
             System.out.println("that booking does not exist");
         }
     }
-//    public void printAllBookings()
-//    {
-//        for(int i=0;i<booking.size();i++)
-//        {
-//            System.out.println(booking.get(i));
-//        }
-//    }
+    public void printAllBookings()
+    {
+        for(int i=0;i<booking.size();i++)
+        {
+            System.out.println(booking.get(i));
+        }
+    }
+
+    public void editBooking()
+    {
+
+        if(this.booking !=null)
+        {
+            String bookingToDelete= enterField("BookingID To edit");
+            Booking bookingToRemove= findBooking(bookingToDelete);
+            if(bookingToRemove != null)
+            {
+                booking.remove(bookingToRemove);
+                System.out.println("please enter updated desktop");
+                addBookings();
+            }
+            else
+            {
+                System.out.println("desktop could not be found");
+            }
+        }
+    }
+
+    public void totalBookings()
+    {
+        int totalbookings=0;
+        int totalLaptops=0;
+        int totalDesktops=0;
+        int totalRaspberrysPis=0;
+
+        for(int i =0; i<=booking.size();i++){
+            totalbookings=i;
+//            if(booking.get(i).getComputerType().equals("Laptop"))
+//            {
+//                totalLaptops= totalLaptops+1;
+//            }
+//            else if(booking.get(i).getComputerType().equals("RaspberryPi"))
+//            {
+//                totalLaptops= totalRaspberrysPis+1;
+//            }
+//            else if(booking.get(i).getComputerType().equals("Desktop"))
+//            {
+//                totalLaptops= totalDesktops+1;
+//            }
+//
+        }
+            System.out.println(Colours.RED+"number of bookings= "+totalbookings+Colours.RESET);
+            System.out.println(Colours.RED+"number of Laptops= "+totalLaptops+Colours.RESET);
+
+    }
+
+
+
 
 }

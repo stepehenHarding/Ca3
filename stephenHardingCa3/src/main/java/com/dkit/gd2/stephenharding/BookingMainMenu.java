@@ -6,5 +6,7 @@ public enum BookingMainMenu {
     ADD_BOOKING,
     DELETE_BOOKING,
     PRINT_BOOKING,
-    PRINT_ALL_BOOKINGS;
+    PRINT_ALL_BOOKINGS,
+    EDIT_BOOKING,
+    TOTAL_BOOKING;
 }

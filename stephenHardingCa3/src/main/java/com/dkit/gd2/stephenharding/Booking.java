@@ -1,15 +1,16 @@
 package com.dkit.gd2.stephenharding;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Booking {
     private String bookingID;
-    private int bookingDate;
-    private int returnDate;
+    private String bookingDate;
+    private String returnDate;
     private String computerType;
     private String ComputerAssetTag;
     private String StudentID;
 
-    public Booking(String bookingID, int bookingDate, int returnDate, String computerType, String computerAssetTag, String studentID) {
+
+    public Booking(String bookingID, String bookingDate, String returnDate, String computerType, String computerAssetTag, String studentID) {
         this.bookingID = bookingID;
         this.bookingDate = bookingDate;
         this.returnDate = returnDate;
@@ -22,13 +23,11 @@ public class Booking {
         return bookingID;
     }
 
-    public int getBookingDate() {
+    public String getBookingDate() {
         return bookingDate;
     }
 
-    public int getReturnDate() {
-        return returnDate;
-    }
+    public String getReturnDate() { return returnDate;}
 
     public String getComputerType() {
         return computerType;
@@ -53,4 +52,9 @@ public class Booking {
                 ", StudentID='" + StudentID +
                 '}'+Colours.RESET;
     }
+
+//    public int compareTo(Booking )
+//    {
+//        return this.bookingDate-((Booking)).;
+//    }
 }

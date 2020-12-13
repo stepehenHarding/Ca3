@@ -4,5 +4,6 @@ public enum DesktopMainMenu {
     QUIT_DESKTOP_MENU,
     ADD_DESKTOP,
     DELETE_DESKTOP,
-    PRINT_DESKTOP;
+    PRINT_DESKTOP,
+    EDIT_DESKTOP;
 }

@@ -172,4 +172,24 @@ public class DesktopDB
         }
     }
 
+    public void editDesktop()
+    {
+
+        if(this.desktop !=null)
+        {
+            String desktopToDelete= enterField("Assert Tag To edit");
+            Desktop desktopToRemove= findDesktop(desktopToDelete);
+            if(desktopToRemove != null)
+            {
+                desktop.remove(desktopToRemove);
+                System.out.println("please enter updated desktop");
+                addDesktops();
+            }
+            else
+            {
+                System.out.println("desktop could not be found");
+            }
+        }
+    }
+
 }

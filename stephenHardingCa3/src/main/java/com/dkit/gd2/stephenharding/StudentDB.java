@@ -3,6 +3,7 @@ package com.dkit.gd2.stephenharding;
 import java.io.*;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class StudentDB
@@ -135,7 +136,7 @@ public class StudentDB
 
     public void printStudent()
     {
-        String studentIDToPrint = enterField("assert tag to print");
+        String studentIDToPrint = enterField("StudentID to print");
         Student studentToPrint = findStudent(studentIDToPrint);
         if(studentToPrint != null)
         {
@@ -143,7 +144,7 @@ public class StudentDB
         }
         else
         {
-            System.out.println("that desktop does not exist");
+            System.out.println("that student does not exist");
         }
     }
 
@@ -155,6 +156,14 @@ public class StudentDB
         }
 
    }
+
+//   public class printAlphabetically implements Comparator<Student>
+//   {
+//       public int Compare(Student student1,Student student2)
+//       {
+//           return student1.getID().compareTo(student2.getID());
+//       }
+//   }
 
 }
 

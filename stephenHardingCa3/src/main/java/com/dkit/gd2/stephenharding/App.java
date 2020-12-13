@@ -116,6 +116,9 @@ public class App
                     case PRINT_DESKTOP:
                         desktopDB.printDesktop();
                         break;
+                    case EDIT_DESKTOP:
+                        desktopDB.editDesktop();
+                        break;
                 }
 
             }
@@ -186,7 +189,7 @@ public class App
         System.out.print("Enter a number to select the option (0 to quit):>");
     }
 
-    //////////////////////////////////////////////////////////////////////////
+    //////////////////////////////laptop////////////////////////////////////////////
 
     private void doLaptopMenuLoop(LaptopDB laptopDB)
     {
@@ -234,7 +237,7 @@ public class App
         }
         System.out.print("Enter a number to select the option (0 to quit):>");
     }
-    ///////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////student/////////////////////////////////////////////////
 
     private void doStudentMenuLoop(StudentDB studentDB)
     {
@@ -284,7 +287,7 @@ public class App
         }
         System.out.print("Enter a number to select the option (0 to quit):>");
     }
-    ///////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////Booking/////////////////////////////////////////////////////////
     private void doBookingMenuLoop(BookingDB bookingDB)
     {
         boolean loop = true;
@@ -313,7 +316,13 @@ public class App
                         bookingDB.printBooking();
                         break;
                     case PRINT_ALL_BOOKINGS:
-                        bookingDB.printBooking();
+                        bookingDB.printAllBookings();
+                        break;
+                    case EDIT_BOOKING:
+                        bookingDB.editBooking();
+                        break;
+                    case TOTAL_BOOKING:
+                        bookingDB.totalBookings();
                         break;
                 }
 
